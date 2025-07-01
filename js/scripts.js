@@ -42,17 +42,24 @@ Function WMG Lottie Initialization (Global)
 
 	// Global function to initialize Lottie animations for Warner Music Group page
 	window.initWMGLottie = function() {
-		console.log('🎬 [WMG] initWMGLottie called!');
+		console.log('🎬 [WMG] initWMGLottie called!', 'Lottie available:', typeof lottie !== 'undefined');
+		
+		// Debug: Check containers exist
+		const containers = ['lottie1', 'lottie2', 'lottie3', 'lottie4'];
+		containers.forEach(id => {
+			const el = document.getElementById(id);
+			console.log(`Container ${id} exists: ${el !== null}`);
+		});
 		
 		// Function to load Lottie library dynamically
 		function loadLottieLibrary(callback) {
 			if (typeof lottie !== 'undefined') {
-				console.log('✅ [WMG] Lottie library already loaded');
+				console.log('✅ [WMG] Lottie library already loaded in global scope');
 				callback();
 				return;
 			}
 			
-			console.log('📦 [WMG] Loading Lottie library...');
+			console.log('📦 [WMG] Loading Lottie library dynamically...');
 			var script = document.createElement('script');
 			script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js';
 			script.onload = function() {
@@ -67,9 +74,14 @@ Function WMG Lottie Initialization (Global)
 		
 		// Function to actually initialize the animations
 		function initAnimations() {
+			console.log('🔄 initAnimations called, lottie exists:', typeof lottie !== 'undefined');
+			
 			// Wait for GSAP and ScrollTrigger to be available
 			if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+				console.log('✅ GSAP and ScrollTrigger available');
 				gsap.registerPlugin(ScrollTrigger);
+			} else {
+				console.warn('⚠️ GSAP or ScrollTrigger not available');
 			}
 			
 			// Initialize Lottie animations with correct paths
@@ -84,7 +96,7 @@ Function WMG Lottie Initialization (Global)
 			];
 
 			// Simple and reliable Lottie loader
-			console.log('🎬 Initializing Lottie animations...');
+			console.log('🎬 Initializing Lottie animations...', 'lottie available:', typeof lottie);
 				animationConfigs.forEach((config, index) => {
 				const container = document.getElementById(config.container);
 				if (!container) {
@@ -193,8 +205,25 @@ Function WMG Lottie Initialization (Global)
 			}
 		}
 		
-		// Load Lottie library and then initialize animations
-		loadLottieLibrary(initAnimations);
+		// Different initialization strategy based on load context
+		if (window.isDirectWMGLoad === true) {
+			// Direct page load - Lottie should be available from the HTML script tag
+			console.log('📌 Direct page load detected, initializing right away');
+			// Double check lottie availability after a slight delay to ensure everything's loaded
+			setTimeout(function() {
+				if (typeof lottie !== 'undefined') {
+					console.log('✅ Lottie found in global scope for direct load');
+					initAnimations();
+				} else {
+					console.error('❌ Lottie still not available, falling back to dynamic loading');
+					loadLottieLibrary(initAnimations);
+				}
+			}, 100); 
+		} else {
+			// AJAX navigation - Need to load Lottie dynamically
+			console.log('📌 AJAX navigation detected, loading Lottie dynamically');
+			loadLottieLibrary(initAnimations);
+		}
 	}; // End initWMGLottie
 	
 	
@@ -204,14 +233,23 @@ Function WMG Lottie Initialization (Global)
 ---------------------------------------------------*/	
 	
 	function CleanupBeforeAjax(){		
-		// reset all scroll triggers
+		console.log('🧹 Running CleanupBeforeAjax');
+		
+		// Reset all scroll triggers
 		let triggers = ScrollTrigger.getAll();
 		triggers.forEach( trigger => {			
 		  	trigger.kill();
 		});
 		
+		// Clean up sliders
 		ClapatSlider.instances.forEach(slider => slider.off());
 		ClapatSlider.instances = [];
+		
+		// Clean up any ongoing GSAP animations
+		// This helps ensure animations restart correctly after navigation
+		gsap.killTweensOf('.caption-timeline span');
+		gsap.killTweensOf('.hero-title span');
+		gsap.killTweensOf('.hero-subtitle span');
 	}
 	
 	
@@ -221,11 +259,20 @@ Function Height Titles
 ---------------------------------------------------*/
 
 	function HeightTitles() {
+		console.log('🔤 Running HeightTitles function');
   
 		function generateSpans(selector) {
 			const elements = document.querySelectorAll(selector);
+			
+			console.log(`Found ${elements.length} elements matching selector: ${selector}`);
 		
 			elements.forEach((element) => {
+				// Check if element has already been processed
+				if (element.getAttribute('data-spans-generated') === 'true') {
+					console.log('Element already processed, skipping:', element);
+					return;
+				}
+				
 				const text = element.textContent.trim();
 				const words = text.split(' ');
 		
@@ -246,9 +293,15 @@ Function Height Titles
 				finalHTML += ''; // Empty span at the end
 		
 				element.innerHTML = finalHTML;
+				element.setAttribute('data-spans-generated', 'true');
 			});
 		}
 		
+		// Force reset any existing animations
+		gsap.killTweensOf('.height-title .hero-title span');
+		gsap.set('.height-title .hero-title span', {clearProps: 'all'});
+		
+		// Generate spans for relevant elements
 		generateSpans('.height-title .hero-title');
 		generateSpans('.height-title .next-hero-title');
 		generateSpans('.height-title .slide-hero-title');
@@ -2379,8 +2432,16 @@ Function Showcase Gallery
 
 
 	window.LoadViaAjax = function() {	
-		HeightTitles()
-		CleanupBeforeAjax();	
+		// Reset and cleanup before initializing new content
+		CleanupBeforeAjax();
+		
+		// Initialize text animations first to ensure proper text rendering
+		HeightTitles();
+		
+		// Force reset of caption-timeline elements to ensure animations work correctly
+		gsap.set('.caption-timeline span', {y: 120, opacity: 0});
+		
+		// Continue with other initializations
 		FirstLoad();
 		ScrollEffects();
 		Sliders();
@@ -2408,6 +2469,40 @@ Function Showcase Gallery
 				console.log('❌ [AJAX] initWMGLottie function not found');
 			}
 		}
+		
+		// Reinitialize text animations specifically for height-title elements
+		setTimeout(function() {
+			console.log('🔄 Reinitializing text animations after AJAX navigation');
+			
+			// For height-title hero sections
+			if ($("#hero-caption").hasClass("height-title")) {
+				const heroSpanLetters = document.querySelectorAll('#hero-caption .hero-title.caption-timeline span');
+				if (heroSpanLetters.length > 0) {
+					console.log('📝 Animating hero title spans');
+					gsap.set(heroSpanLetters, {scaleY: 0.3, opacity: 0, y: 0});
+					
+					const heroSpanLettersPlay = gsap.timeline({ delay: 0.3 }); 
+					Array.from(heroSpanLetters).forEach((spanLetter, index) => {
+						heroSpanLettersPlay.to(spanLetter, {
+							duration: 0.7,
+							scaleY: 1,
+							y: 0, 
+							opacity: 1,
+							ease: Power3.easeOut,
+						}, index * 0.05);
+					});
+					
+					gsap.to('#hero-caption .hero-subtitle.caption-timeline span', {
+						duration: 0.7, 
+						y: 0, 
+						opacity: 1, 
+						stagger: 0.1, 
+						delay: 0.5, 
+						ease: Power3.easeOut
+					});
+				}
+			}
+		}, 100);
 		
 	}//End Load Via Ajax
 	
