@@ -1,0 +1,166 @@
+/* Custom styles for portfolio slides */
+.small-title {
+    font-size: 1.2rem !important;
+    line-height: 1.3 !important;
+    margin-bottom: 0.5rem !important;
+}
+
+/* Slide Title Main */
+.slide-title-main {
+    font-family: 'aptos', sans-serif;
+    font-weight: 700;
+    font-style: normal;
+    font-size: 3.5rem !important;
+    line-height: 1.1 !important;
+    margin-bottom: 0.2rem !important;
+    text-align: center !important;
+    color: #fff !important;
+    width: 100%;
+}
+
+/* Slide Description */
+.description-text,
+.description-text span {
+    font-family: 'aptos', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.1rem !important;
+    line-height: 1.5 !important;
+    margin-bottom: 1.2rem !important;
+    margin-top: 0.2rem !important;
+    color: #fff !important;
+    text-align: center !important;
+    display: block;
+    width: 100%;
+}
+
+.avatar-logo {
+    height: 50px !important;
+    width: 50px !important;
+    border-radius: 50% !important;
+    object-fit: cover !important;
+}
+
+/* Center slide-caption content */
+.slide-caption {
+    position: absolute !important;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: auto;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 10;
+    text-align: center;
+    transform: translate(-50%, -50%);
+}
+
+body {
+    font-family: 'aptos', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background: #010101 !important;
+}
+
+#clapat-page-content,
+.cd-index.cd-main-content {
+    background: #010101 !important;
+}
+
+#hero {
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-bg-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.hero-bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7); /* 70% darkness for better blending */
+    z-index: 1;
+    pointer-events: none;
+}
+
+#hero > *:not(.hero-bg-video):not(.hero-bg-overlay) {
+    position: relative;
+    z-index: 2;
+}
+
+.slide-caption .slide-description.description-text,
+.slide-caption .slide-description.description-text span {
+    color: #fff !important;
+    opacity: 1 !important;
+}
+
+/* Deliverables section layout */
+.deliverables-row {
+  display: flex;
+  gap: 48px;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+.deliverables-col {
+  flex: 1;
+  min-width: 180px;
+}
+.deliverables-section-title {
+  font-weight: bold;
+  font-size: 1em;
+  margin-top: 0.5em;
+  margin-bottom: 0.2em;
+  letter-spacing: 0.01em;
+  color: #fff;
+}
+
+/* Add spacing above Deliverables heading */
+.bigger.no-margins + .deliverables-row,
+.bigger.no-margins + .deliverables-section-title {
+  margin-top: 0.5em;
+}
+
+/* Or, if the Deliverables heading is a <p class="bigger no-margins">, add margin-bottom to it */
+.bigger.no-margins {
+  margin-bottom: 0;
+}
+
+.section-label-value {
+  margin-bottom: 1em;
+  display: block;
+  color: #fff;
+}
+
+/* Add extra margin above Deliverables only */
+.bigger.no-margins.deliverables-label {
+  margin-top: 2em;
+  margin-bottom: 0;
+}
+
+.deliverables-col ul {
+  margin-top: 0;
+  margin-bottom: 1em;
+  padding-left: 20px;
+}
+.deliverables-col ul:last-child {
+  margin-bottom: 0;
+}
+.deliverables-col li {
+  font-size: 0.98em;
+  margin-bottom: 0.2em;
+} 

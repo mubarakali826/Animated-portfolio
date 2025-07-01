@@ -1,0 +1,164 @@
+.fullscreen-menu .flexnav > li > a {
+    font-family: 'ywft-rina-variable', sans-serif;
+    font-weight: 500;
+    font-size: calc(1rem + 2vw);
+    padding: 0 50px;
+    margin: 20px 0;
+    -webkit-transition: all .1s ease-in-out 0s;
+    transition: all .1s ease-in-out 0s;
+    text-transform: none;
+}
+
+.fullscreen-menu .flexnav li ul li a {
+    padding: 3px 0;
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 500;
+    border-top: none;
+    text-transform: none;
+    font-family: 'aptos', sans-serif;
+}
+
+/* Remove all arrow styles for external links */
+
+/* Add styles for external links */
+.fullscreen-menu .flexnav li ul li a[target="_blank"] {
+    /* Remove arrow and extra padding */
+    position: static;
+    padding-right: 0;
+}
+
+.slide-title-main {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    font-weight: 700;
+}
+
+@media (max-width: 600px) {
+.slide-title-main {
+    font-size: 2rem;
+    line-height: 1.15;
+}
+}
+
+.hero-title {
+    font-size: 5rem !important;
+    font-weight: 500;
+    letter-spacing: -0.04em;
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 3.5rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2.5rem !important;
+    }
+}
+
+.hero-title.caption-timeline {
+    font-size: 3.5em;
+    line-height: 1.2;
+    font-weight: 500;
+    letter-spacing: -0.04em;
+}
+
+@media (max-width: 768px) {
+    .hero-title.caption-timeline {
+        font-size: 2.5em;
+        line-height: 1.3;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title.caption-timeline {
+        font-size: 2em;
+        line-height: 1.4;
+    }
+}
+
+.start-thumbs-caption {
+    margin-bottom: 2rem;
+}
+
+.start-thumbs-wrapper {
+    margin-top: 0;
+}
+
+.start-move-thumb {
+    margin-bottom: 1rem;
+}
+
+.services-title {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+}
+
+.services-subtitle {
+    font-size: 1rem;
+    line-height: 1.4;
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+    .services-title {
+        font-size: 1.75rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .services-title {
+        font-size: 1.5rem;
+    }
+}
+
+.big-title {
+    font-size: 3.5em;
+    line-height: 1.2;
+    font-weight: 500;
+    letter-spacing: -0.04em;
+}
+
+@media (max-width: 768px) {
+    .big-title {
+        font-size: 2.5em;
+        line-height: 1.3;
+    }
+}
+
+@media (max-width: 480px) {
+    .big-title {
+        font-size: 2em;
+        line-height: 1.4;
+    }
+}
+
+.bullet-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.bullet-list li {
+    position: relative;
+    padding-left: 1.5em;
+    margin-bottom: 0.5em;
+    line-height: 1.4;
+}
+
+.bullet-list li:before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #fff;
+    font-size: 1.2em;
+}
+
+.accordion-content {
+    padding: 1.5em 0;
+} 

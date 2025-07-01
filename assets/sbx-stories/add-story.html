@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Storybox</title>
+
+
+
+
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/css/all.min.css" rel="stylesheet">
+    <link href="assets/css/fontawesome.css" rel="stylesheet">
+    <link href="assets/css/default.css" rel="stylesheet">
+    <link href="assets/css/nice-select.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/responsive.css" rel="stylesheet">
+    <style>
+        .custom-editor {
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            padding: .375rem .75rem;
+            min-height: 120px;
+            background: #fff;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <!-- add-story-area-start -->
+     <section class="add-story">
+        <div class="add-story__title">
+            <h3>Add Story</h3>
+            <p>Add details, upload photos, and share your story with your team.</p>
+        </div>
+        <div class="story__from">
+            <form action="#">
+                <div class="single__input">
+                    <label for="#">Title to Story</label>
+                    <input type="text" placeholder="Secret Show NY">
+                </div>
+                <div class="story__flex">   
+                    <div class="single__select">
+                        <select id="font-select">
+                            <option data-display="Inter">Inter</option>
+                            <option value="Arial">Arial</option>
+                            <option value="Verdana">Verdana</option>
+                            <option value="Times New Roman">Times New Roman</option>
+                            <option value="Georgia">Georgia</option>
+                          </select>
+                    </div>
+                    <div class="story__edit">
+                        <a href="#" id="bold-btn"><img src="assets/img/e1.svg" alt="Bold"></a>
+                        <a href="#" id="italic-btn"><img src="assets/img/e3.svg" alt="Italic"></a>
+                        <a href="#" id="strikethrough-btn"><img src="assets/img/e2.svg" alt="Strikethrough"></a>
+                        <a href="#" id="heading-btn"><img src="assets/img/e5.svg" alt="Heading"></a>
+                        <a href="#" id="link-btn"><img src="assets/img/e6.svg" alt="Link"></a>
+                        <a href="#" id="image-btn"><img src="assets/img/e7.svg" alt="Image"></a>
+                        <a href="#" id="list-btn"><img src="assets/img/e8.svg" alt="Unordered List"></a>
+                        <a href="#" id="clear-format-btn"><img src="assets/img/e4.svg" alt="Clear Formatting"></a>
+                    </div>
+                </div>
+                <div class="single__input">
+                    <label for="#">Description</label>
+                    <div id="story-description" contenteditable="true" class="custom-editor"></div>
+                    <input type="hidden" name="story_description_content" id="story-description-content">
+                    <p>What makes a great story? Read our <a href="#">Storybox Guide</a></p>
+                </div>
+                <div class="upload">
+                    <input type="file" id="myfile" name="myfile"> 
+                    <label for="#">
+                        <div class="upload__icon">
+                            <img src="assets/img/upload-cloud-02.svg" alt="">
+                        </div>
+                        <div class="upload__text">
+                            <p><span>Click to upload</span>or drag and drop</p>
+                            <span> PDFs, videos (MP4, WEBM), audio (MP3), or images (SVG, PNG, JPG, GIF)</span>
+                        </div>
+                    </label>
+                </div>
+                <div class="uolpaded__file first">
+                    <div class="uploaded__file--left">
+                        <div class="uploaded__file-icon">
+                            <i class="fal fa-file"></i>
+                        </div>
+                        <div class="uploaded__file--text">
+                            <h3>DLipa-Flyer.pdf</h3>
+                            <p>200 KB – 70% uploaded</p>
+                        </div>
+                    </div>
+                    <div class="uploaded__file--load">
+                        <img src="assets/img/Loading.svg" alt="">
+                    </div>
+                </div>
+                <div class="uolpaded__file">
+                    <div class="uploaded__file--left">
+                        <div class="uploaded__file-icon">
+                            <i class="fal fa-file"></i>
+                        </div>
+                        <div class="uploaded__file--text">
+                            <h3>Dlipa-headshot.jpg</h3>
+                            <p>200 KB – 100% uploaded</p>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="uolpaded__file last">
+                    <div class="uploaded__file--left">
+                        <div class="uploaded__file-icon">
+                            <i class="fal fa-file"></i>
+                        </div>
+                        <div class="uploaded__file--text">
+                            <h3>DLipa-Flyer.zip</h3>
+                            <p>Upload failed, please try again</p>
+                            <a href="#">Try again</a>
+                        </div>
+                    </div>
+                    <div class="uploaded__file--delete">
+                        <a href="#"><i class="far fa-trash-alt"></i></a>
+                    </div>
+                </div>
+                <div class="file__table">
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">
+                                <div class="table__check">
+                                    <label class="containerss">
+                                        <input type="checkbox" checked="checked">
+                                        <span class="checkmark"></span>
+                                      </label>
+                                </div>
+                            </th>
+                            <th scope="col">File name</th>
+                            <th scope="col">File size</th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">
+                                <div class="table__check">
+                                    <label class="containerss">
+                                        <input type="checkbox" checked="checked">
+                                        <span class="checkmark"></span>
+                                      </label>
+                                </div>
+                            </th>
+                            <td>
+                                <div class="file__type">
+                                    <img src="assets/img/File-type1.svg" alt="">
+                                    <h3>Lipa-writer.pdf</h3>
+                                </div>
+                            </td>
+                            <td>200 KB</td>
+                            <td>
+                                <div class="file__edite">
+                                    <a href="#"><i class="far fa-trash-alt"></i>Edit</a>
+                                </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th scope="row">
+                                <div class="table__check">
+                                    <label class="containerss">
+                                        <input type="checkbox" checked="checked">
+                                        <span class="checkmark"></span>
+                                      </label>
+                                </div>
+                            </th>
+                            <td>
+                                <div class="file__type">
+                                    <img src="assets/img/File-type2.svg" alt="">
+                                    <h3>dula_lipa_headshot-2.jpg</h3>
+                                </div>
+                            </td>
+                            <td>720 KB</td>
+                            <td>
+                                <div class="file__edite">
+                                    <a href="#"><i class="far fa-trash-alt"></i>Edit</a>
+                                </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th scope="row">
+                                <div class="table__check">
+                                    <label class="containerss">
+                                        <input type="checkbox" checked="checked">
+                                        <span class="checkmark"></span>
+                                      </label>
+                                </div>
+                            </th>
+                            <td>
+                                <div class="file__type">
+                                    <img src="assets/img/File-type3.svg" alt="">
+                                    <h3>Promo-videoDL.mp4</h3>
+                                </div>
+                            </td>
+                            <td>16 MB</td>
+                            <td>
+                                <div class="file__edite">
+                                    <a href="#"><i class="far fa-trash-alt"></i>Edit</a>
+                                </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+                <div class="tag-container">
+                    <label class="tag">
+                      <input type="checkbox" hidden checked>
+                      <span class="check-tag"></span>
+                      <span class="check-text">Best case</span> <i class="far fa-times"></i>
+                    </label>
+                    <label class="tag">
+                      <input type="checkbox" hidden>
+                      <span class="check-tag"></span>
+                      <span class="check-text">BPS Licensing</span><i class="far fa-times"></i>
+                    </label>
+                    <label class="tag">
+                      <input type="checkbox" hidden>
+                      <span class="check-tag"></span>
+                      <span class="check-text">Catalogue</span><i class="far fa-times"></i>
+                    </label>
+                    <label class="tag">
+                      <input type="checkbox" hidden>
+                      <span class="check-tag"></span>
+                      <span class="check-text">CRM</span><i class="far fa-times"></i>
+                    </label>
+                    <label class="tag">
+                      <input type="checkbox" hidden>
+                      <span class="check-tag"></span>
+                      <span class="check-text">Influencer</span><i class="far fa-times"></i>
+                    </label>
+                    <label class="tag">
+                      <input type="checkbox" hidden>
+                      <span class="check-tag"></span>
+                      <span class="check-text">Live</span><i class="far fa-times"></i>
+                    </label>
+                    <label class="tag">
+                      <input type="checkbox" hidden>
+                      <span class="check-tag"></span>
+                      <span class="check-text">Marketing</span><i class="far fa-times"></i>
+                    </label>
+                    <label class="tag">
+                      <input type="checkbox" hidden>
+                      <span class="check-tag"></span>
+                      <span class="check-text">Owen Media</span><i class="far fa-times"></i>
+                    </label>
+                    <label class="tag">
+                      <input type="checkbox" hidden>
+                      <span class="check-tag"></span>
+                      <span class="check-text">Pitching Points</span><i class="far fa-times"></i>
+                    </label>
+                    <label class="tag">
+                      <input type="checkbox" hidden>
+                      <span class="check-tag"></span>
+                      <span class="check-text">Podcast</span><i class="far fa-times"></i>
+                    </label>
+                    <label class="tag">
+                      <input type="checkbox" hidden>
+                      <span class="check-tag"></span>
+                     <span class="check-text"> Media Coop</span><i class="far fa-times"></i>
+                    </label>
+                    <label class="tag">
+                      <input type="checkbox" hidden>
+                      <span class="check-tag"></span>
+                      <span class="check-text">Print/Online</span><i class="far fa-times"></i>
+                    </label>
+                    <label class="tag">
+                      <input type="checkbox" hidden>
+                      <span class="check-tag"></span>
+                      <span class="check-text">Radio</span><i class="far fa-times"></i>
+                    </label>
+                    <label class="tag">
+                      <input type="checkbox" hidden>
+                      <span class="check-tag"></span>
+                      <span class="check-text">Sales</span><i class="far fa-times"></i>
+                    </label>
+                    <label class="tag">
+                      <input type="checkbox" hidden>
+                      <span class="check-tag"></span>
+                      <span class="check-text">Streaming</span><i class="far fa-times"></i>
+                    </label>
+                    <label class="tag">
+                      <input type="checkbox" hidden>
+                      <span class="check-tag"></span>
+                      <span class="check-text">Tiktok</span><i class="far fa-times"></i>
+                    </label>
+                    <label class="tag">
+                      <input type="checkbox" hidden>
+                      <span class="check-tag"></span>
+                      <span class="check-text">AT</span><i class="far fa-times"></i>
+                    </label>
+                    <label class="tag">
+                      <input type="checkbox" hidden>
+                      <span class="check-tag"></span>
+                      <span class="check-text">TV</span><i class="far fa-times"></i>
+                    </label>
+                    <label class="tag">
+                      <input type="checkbox" hidden>
+                      <span class="check-tag"></span>
+                      <span class="check-text">CH</span><i class="far fa-times"></i>
+                    </label>
+                  </div>
+                  
+            </form>
+            <div class="form__btn">
+                <a href="#">Cancel</a>
+                <a href="#">Add Story</a>
+            </div>
+        </div>
+     </section>
+    <!-- add-story-area-end -->
+
+
+
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/Popper.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.nice-select.js"></script>
+    <script src="assets/js/main.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const fontSelect = document.getElementById('font-select');
+        const storyDescription = document.getElementById('story-description');
+        const storyDescriptionContent = document.getElementById('story-description-content');
+
+        if (storyDescription) {
+            storyDescription.addEventListener('input', () => {
+                storyDescriptionContent.value = storyDescription.innerHTML;
+            });
+        }
+
+        if (fontSelect && storyDescription) {
+            fontSelect.addEventListener('change', (event) => {
+                if (event.target.value) {
+                    document.execCommand('fontName', false, event.target.value);
+                }
+            });
+        }
+
+        const editorButtons = {
+            'bold-btn': 'bold',
+            'italic-btn': 'italic',
+            'strikethrough-btn': 'strikethrough',
+            'list-btn': 'insertUnorderedList',
+            'clear-format-btn': 'removeFormat'
+        };
+
+        for (const btnId in editorButtons) {
+            const button = document.getElementById(btnId);
+            if(button) {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    document.execCommand(editorButtons[btnId], false, null);
+                    storyDescription.focus();
+                });
+            }
+        }
+        
+        const headingBtn = document.getElementById('heading-btn');
+        if(headingBtn) {
+            headingBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.execCommand('formatBlock', false, 'h2');
+                storyDescription.focus();
+            });
+        }
+
+        const linkBtn = document.getElementById('link-btn');
+        if(linkBtn) {
+            linkBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const url = prompt('Enter the URL:');
+                if (url) {
+                    document.execCommand('createLink', false, url);
+                }
+                storyDescription.focus();
+            });
+        }
+        
+        const imageBtn = document.getElementById('image-btn');
+        if(imageBtn) {
+            imageBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const url = prompt('Enter the image URL:');
+                if (url) {
+                    document.execCommand('insertImage', false, url);
+                }
+                storyDescription.focus();
+            });
+        }
+
+    });
+</script>
+<!-- <script>
+
+document.addEventListener('DOMContentLoaded', () => {
+// ... existing code ...
+
+</script>
+   -->
+        
+
+</body>
+
+</html>
